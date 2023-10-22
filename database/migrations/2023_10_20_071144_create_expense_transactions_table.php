@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('expense_transactions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('transaction_id')->constrained()->onDelete('cascade');
+            $table->foreignId('payment_id')->nullable()->constrained()->onDelete('cascade');
+            $table->string('store_name', 40)->nullable();
             $table->timestamps();
         });
     }
