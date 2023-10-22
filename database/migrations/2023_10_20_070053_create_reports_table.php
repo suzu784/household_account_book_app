@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('report_category_id')->constrained()->onDelete('cascade');
+            $table->text('content', 1000);
+            $table->boolean('is_read')->default(false);
             $table->timestamps();
         });
     }

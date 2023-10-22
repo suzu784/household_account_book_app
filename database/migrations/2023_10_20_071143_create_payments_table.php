@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('report_categories', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->enum('method', ['cash', 'debit', 'credit', 'ewallet']);
             $table->timestamps();
         });
     }
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('report_categories');
+        Schema::dropIfExists('payments');
     }
 };

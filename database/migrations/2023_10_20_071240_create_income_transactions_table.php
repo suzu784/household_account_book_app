@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('income_transactions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('transaction_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
