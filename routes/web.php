@@ -8,7 +8,11 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TransactionController;
 
-Route::resource('/transactions', TransactionController::class)
+Route::get('/', [TransactionController::class, 'index'])
+    ->middleware('auth')
+    ->name('transactions.index');
+
+Route::resource('/transactions', TransactionController::class, ['except' => ['index']])
     ->middleware('auth');
 
 Route::resource('/reports', ReportController::class)
@@ -16,15 +20,6 @@ Route::resource('/reports', ReportController::class)
 
 Route::resource('/budgets', BudgetController::class)
     ->middleware('auth');
-
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
