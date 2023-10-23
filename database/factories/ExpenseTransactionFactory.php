@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Payment;
+use App\Models\Transaction;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +18,13 @@ class ExpenseTransactionFactory extends Factory
      */
     public function definition(): array
     {
+        $randomTransaction = Transaction::all()->random();
+        $randomPayment = Payment::all()->random();
+        
         return [
-            //
+            'transaction_id' => $randomTransaction->id,
+            'payment_id' => $randomPayment->id,
+            'store_name' => $this->faker->company(),
         ];
     }
 }
