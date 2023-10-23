@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Transaction;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,10 @@ class IncomeTransactionFactory extends Factory
      */
     public function definition(): array
     {
+        $randomTransaction = Transaction::all()->random();
+        
         return [
-            //
+            'transaction_id' => $randomTransaction->id,
         ];
     }
 }
