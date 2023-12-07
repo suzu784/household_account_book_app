@@ -12,7 +12,7 @@ Route::get('/', [TransactionController::class, 'index'])
     ->middleware('auth')
     ->name('transactions.index');
 
-Route::resource('/transactions', TransactionController::class, ['except' => ['index']])
+Route::resource('/transactions', TransactionController::class)
     ->middleware('auth');
 
 Route::resource('/reports', ReportController::class)
@@ -21,7 +21,7 @@ Route::resource('/reports', ReportController::class)
 Route::resource('/budgets', BudgetController::class)
     ->middleware('auth');
 
-Route::get('/dashboard', function () {
+Route::get('/', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
