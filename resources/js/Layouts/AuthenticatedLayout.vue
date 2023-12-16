@@ -11,7 +11,7 @@ const showingNavigationDropdown = ref(false);
 
 <template>
     <div>
-        <div class="min-h-screen bg-gray-100">
+        <div class="flex flex-col min-h-screen bg-gray-100">
             <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
@@ -141,12 +141,12 @@ const showingNavigationDropdown = ref(false);
             </header>
 
             <!-- Page Content -->
-            <main>
+            <main class="flex-grow">
                 <slot />
             </main>
 
             <!-- Page Footer -->
-            <footer class="bg-gray-700 py-10 w-full fixed bottom-0">
+            <footer class="bg-gray-800 py-10 text-center">
                 <div class="container mx-auto px-4">
                     <p class="text-white text-center">© 2023 家計簿アプリ</p>
                 </div>
