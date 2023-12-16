@@ -8,10 +8,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TransactionController;
 
-Route::get('/', [TransactionController::class, 'index'])
-    ->middleware('auth')
-    ->name('transactions.index');
-
 Route::resource('/transactions', TransactionController::class)
     ->middleware('auth');
 
